@@ -1,0 +1,32 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FoodDrinkApp"
+             x:Class="FoodDrinkApp.App">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- 浅紫主题 -->
+            <Color x:Key="MainBackgroundColor">#F6F0FF</Color>
+            <Color x:Key="CardPurple">#D9C2FF</Color>
+            <Color x:Key="SoftPurple">#EEE4FF</Color>
+
+            <!-- 按钮浅黄 -->
+            <Color x:Key="ButtonYellow">#FFE9A8</Color>
+
+            <!-- 文字 -->
+            <Color x:Key="PrimaryText">#4B3B5A</Color>
+            <Color x:Key="SecondaryText">#7B6D8D</Color>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

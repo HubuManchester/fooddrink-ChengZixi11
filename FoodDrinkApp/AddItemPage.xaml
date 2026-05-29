@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkApp.AddItemPage"
+             Title="Add Record">
+
+    <ScrollView>
+
+        <!-- 页面背景 -->
+        <ScrollView.Background>
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,1">
+
+                <GradientStop Color="#F6F0FF"
+                              Offset="0.0" />
+
+                <GradientStop Color="#F2EAFF"
+                              Offset="0.5" />
+
+                <GradientStop Color="#EEE4FF"
+                              Offset="1.0" />
+
+            </LinearGradientBrush>
+        </ScrollView.Background>
+
+        <VerticalStackLayout Padding="22"
+                             Spacing="18">
+
+            <!-- 顶部标题卡片 -->
+            <Border StrokeThickness="0"
+                    Padding="20"
+                    BackgroundColor="#FFFFFF">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <Border.Shadow>
+                    <Shadow Brush="#15000000"
+                            Offset="0,3"
+                            Radius="8"
+                            Opacity="0.12" />
+                </Border.Shadow>
+
+                <Grid RowDefinitions="Auto,Auto"
+                      RowSpacing="8">
+
+                    <Label Text="Add food or drink"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="#4B3B5A"
+                           SemanticProperties.HeadingLevel="Level1" />
+
+                    <Label Grid.Row="1"
+                           Text="Record the full details of a meal worth remembering."
+                           FontSize="15"
+                           TextColor="#7A6A92" />
+
+                </Grid>
+
+            </Border>
+
+            <!-- Basic Information -->
+            <Border StrokeThickness="1"
+                    Stroke="#D6C2FF"
+                    BackgroundColor="#FFFFFF"
+                    Padding="18">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="Basic information"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#8B6FB3" />
+
+                    <!-- Name -->
+                    <Border Stroke="#E5D7FF"
+                            StrokeThickness="1"
+                            BackgroundColor="#FAF7FF"
+                            Padding="12,4">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="NameEntry"
+                               Placeholder="Name"
+                               TextColor="#4B3B5A"
+                               PlaceholderColor="#9A8AB5"
+                               BackgroundColor="Transparent"
+                               SemanticProperties.Hint="Required food or drink name" />
+
+                    </Border>
+
+                    <!-- Category -->
+                    <Border Stroke="#E5D7FF"
+                            StrokeThickness="1"
+                            BackgroundColor="#FAF7FF"
+                            Padding="12,4">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <Picker x:Name="CategoryPicker"
+                                Title="Category"
+                                TitleColor="#9A8AB5"
+                                TextColor="#4B3B5A"
+                                BackgroundColor="Transparent"
+                                SemanticProperties.Hint="Required category">
+
+                            <Picker.Items>
+                                <x:String>Breakfast</x:String>
+                                <x:String>Lunch</x:String>
+                                <x:String>Dinner</x:String>
+                                <x:String>Snack</x:String>
+                                <x:String>Drink</x:String>
+                            </Picker.Items>
+
+                        </Picker>
+
+                    </Border>
+
+                    <!-- Description -->
+                    <Border Stroke="#E5D7FF"
+                            StrokeThickness="1"
+                            BackgroundColor="#FAF7FF"
+                            Padding="12">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <Editor x:Name="DescriptionEditor"
+                                Placeholder="Description, ingredients, flavour, or context"
+                                PlaceholderColor="#9A8AB5"
+                                TextColor="#4B3B5A"
+                                BackgroundColor="Transparent"
+                                AutoSize="TextChanges"
+                                HeightRequest="120"
+                                SemanticProperties.Hint="Describe this food or drink" />
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Nutrition -->
+            <Border StrokeThickness="1"
+                    Stroke="#D6C2FF"
+                    BackgroundColor="#FFFFFF"
+                    Padding="18">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="16">
+
+                    <Label Text="Nutrition data"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#7AA874" />
+
+                    <!-- Calories + Protein -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+
+                        <Border Stroke="#E5D7FF"
+                                StrokeThickness="1"
+                                BackgroundColor="#FAF7FF"
+                                Padding="12,4">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+
+                            <Entry x:Name="CaloriesEntry"
+                                   Placeholder="Calories"
+                                   Keyboard="Numeric"
+                                   TextColor="#4B3B5A"
+                                   PlaceholderColor="#9A8AB5"
+                                   BackgroundColor="Transparent"
+                                   SemanticProperties.Hint="Required calories as a number" />
+
+                        </Border>
+
+                        <Border Grid.Column="1"
+                                Stroke="#E5D7FF"
+                                StrokeThickness="1"
+                                BackgroundColor="#FAF7FF"
+                                Padding="12,4">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+
+                            <Entry x:Name="ProteinEntry"
+                                   Placeholder="Protein g"
+                                   Keyboard="Numeric"
+                                   TextColor="#4B3B5A"
+                                   PlaceholderColor="#9A8AB5"
+                                   BackgroundColor="Transparent" />
+
+                        </Border>
+
+                    </Grid>
+
+                    <!-- Carbs + Fat -->
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="12">
+
+                        <Border Stroke="#E5D7FF"
+                                StrokeThickness="1"
+                                BackgroundColor="#FAF7FF"
+                                Padding="12,4">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+
+                            <Entry x:Name="CarbsEntry"
+                                   Placeholder="Carbs g"
+                                   Keyboard="Numeric"
+                                   TextColor="#4B3B5A"
+                                   PlaceholderColor="#9A8AB5"
+                                   BackgroundColor="Transparent" />
+
+                        </Border>
+
+                        <Border Grid.Column="1"
+                                Stroke="#E5D7FF"
+                                StrokeThickness="1"
+                                BackgroundColor="#FAF7FF"
+                                Padding="12,4">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+
+                            <Entry x:Name="FatEntry"
+                                   Placeholder="Fat g"
+                                   Keyboard="Numeric"
+                                   TextColor="#4B3B5A"
+                                   PlaceholderColor="#9A8AB5"
+                                   BackgroundColor="Transparent" />
+
+                        </Border>
+
+                    </Grid>
+
+                    <!-- Allergy -->
+                    <Border Stroke="#E5D7FF"
+                            StrokeThickness="1"
+                            BackgroundColor="#FAF7FF"
+                            Padding="12,4">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="14" />
+                        </Border.StrokeShape>
+
+                        <Entry x:Name="AllergyEntry"
+                               Placeholder="Allergy note or dietary restriction"
+                               TextColor="#4B3B5A"
+                               PlaceholderColor="#9A8AB5"
+                               BackgroundColor="Transparent"
+                               SemanticProperties.Hint="Enter allergy or dietary information" />
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Validation -->
+            <Border x:Name="ValidationPanel"
+                    IsVisible="False"
+                    StrokeThickness="0"
+                    BackgroundColor="#FFF4D6"
+                    Padding="14">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+
+                <Label x:Name="ValidationLabel"
+                       TextColor="#A06B00"
+                       FontAttributes="Bold" />
+
+            </Border>
+
+            <!-- Save Button -->
+            <Button Text="Save record"
+                    HeightRequest="58"
+                    CornerRadius="18"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    BackgroundColor="#CDB4FF"
+                    TextColor="#4B3B5A"
+                    Clicked="OnSaveClicked"
+                    SemanticProperties.Hint="Validate and save this record" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

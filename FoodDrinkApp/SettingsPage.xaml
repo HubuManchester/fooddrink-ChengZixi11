@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodDrinkApp.SettingsPage"
+             Title="Settings">
+
+    <ScrollView>
+
+        <!-- 页面背景 -->
+        <ScrollView.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F6F0FF" Offset="0.0" />
+                <GradientStop Color="#F2EAFF" Offset="0.5" />
+                <GradientStop Color="#EEE4FF" Offset="1.0" />
+            </LinearGradientBrush>
+        </ScrollView.Background>
+
+        <VerticalStackLayout Padding="22"
+                             Spacing="16">
+
+            <!-- 顶部标题 -->
+            <Border StrokeThickness="0"
+                    Padding="18"
+                    BackgroundColor="#FFFFFF">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="6">
+
+                    <Label Text="Accessibility Settings"
+                           FontSize="28"
+                           FontAttributes="Bold"
+                           TextColor="#4B3B5A"
+                           SemanticProperties.HeadingLevel="Level1" />
+
+                    <Label Text="Large text takes effect immediately and remains active when switching pages."
+                           FontSize="15"
+                           TextColor="#6D5D82" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- 设置卡片 -->
+            <Border StrokeThickness="1"
+                    Stroke="#D6C2FF"
+                    BackgroundColor="#FFFFFF"
+                    Padding="16">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="16">
+
+                    <!-- Theme -->
+                    <Grid RowDefinitions="Auto,Auto"
+                          RowSpacing="8">
+
+                        <Label Text="Theme Mode"
+                               FontSize="17"
+                               FontAttributes="Bold"
+                               TextColor="#8B6FB3" />
+
+                        <Picker x:Name="ThemePicker"
+                                Grid.Row="1"
+                                Title="Choose app theme"
+                                SelectedIndexChanged="OnThemeChanged"
+                                TextColor="#4B3B5A"
+                                BackgroundColor="#F7F1FF"
+                                SemanticProperties.Hint="Switch between system, light, and dark theme">
+
+                            <Picker.Items>
+                                <x:String>Use system theme</x:String>
+                                <x:String>Light theme</x:String>
+                                <x:String>Dark theme</x:String>
+                            </Picker.Items>
+
+                        </Picker>
+
+                    </Grid>
+
+                    <!-- 分割线 -->
+                    <BoxView HeightRequest="1"
+                             Color="#D6C2FF" />
+
+                    <!-- Large Text -->
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="14">
+
+                        <VerticalStackLayout Spacing="4">
+
+                            <Label Text="Large Text Mode"
+                                   FontSize="17"
+                                   FontAttributes="Bold"
+                                   TextColor="#8B6FB3" />
+
+                            <Label Text="Increase text size for accessibility demonstration."
+                                   FontSize="13"
+                                   TextColor="#6D5D82" />
+
+                        </VerticalStackLayout>
+
+                        <Switch x:Name="LargeTextSwitch"
+                                Grid.Column="1"
+                                OnColor="#CDB4FF"
+                                ThumbColor="#FFE9A8"
+                                Toggled="OnLargeTextToggled"
+                                SemanticProperties.Hint="Increase text size across the current session" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- 预览卡片 -->
+            <Border StrokeThickness="1"
+                    Stroke="#D6C2FF"
+                    BackgroundColor="#FFF7D6"
+                    Padding="16">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label x:Name="LargeTextPreviewTitle"
+                           Text="Large Text Preview"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#A06B00" />
+
+                    <Label x:Name="LargeTextPreviewBody"
+                           Text="When enabled, this text and the rest of the page become visibly larger."
+                           FontSize="15"
+                           TextColor="#6D5D82" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- 底部状态 -->
+            <Label x:Name="SettingsStatusLabel"
+                   Text="Settings ready."
+                   FontAttributes="Bold"
+                   TextColor="#8B6FB3" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
