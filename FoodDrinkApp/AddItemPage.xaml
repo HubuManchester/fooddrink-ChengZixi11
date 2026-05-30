@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!-- Add Food/Drink Record Page -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkApp.AddItemPage"
              Title="Add Record"
              BackgroundColor="{AppThemeBinding Light=#F8F4FF, Dark=#1E1A24}">
 
+    <!-- Allows the page content to scroll on smaller screens -->
     <ScrollView>
 
+        <!-- Main vertical layout container -->
         <VerticalStackLayout Padding="20"
                              Spacing="20">
 
-            <!-- Banner -->
+            <!-- Top banner section -->
             <Grid HeightRequest="180">
 
                 <Border StrokeThickness="0">
@@ -20,6 +23,7 @@
                         <RoundRectangle CornerRadius="30"/>
                     </Border.StrokeShape>
 
+                    <!-- Gradient background for banner -->
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0"
                                              EndPoint="1,1">
@@ -38,6 +42,7 @@
 
                 </Border>
 
+                <!-- Banner text content -->
                 <VerticalStackLayout Padding="24"
                                      VerticalOptions="Center">
 
@@ -54,12 +59,13 @@
 
             </Grid>
 
-            <!-- Basic Details -->
+            <!-- Section title for meal information -->
             <Label Text="MEAL INFORMATION"
                    FontSize="14"
                    FontAttributes="Bold"
                    TextColor="#8B6FB3"/>
 
+            <!-- Card containing basic meal details -->
             <Border BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#31283C}"
                     Stroke="{AppThemeBinding Light=#D8C5FF, Dark=#4D405D}"
                     Padding="18">
@@ -70,14 +76,14 @@
 
                 <VerticalStackLayout Spacing="16">
 
-                    <!-- Name -->
+                    <!-- Food or drink name input -->
                     <Entry x:Name="NameEntry"
                            Placeholder="Meal or drink name"
                            BackgroundColor="{AppThemeBinding Light=#F7F2FF, Dark=#3A3047}"
                            TextColor="{AppThemeBinding Light=#4B3B5A, Dark=White}"
                            PlaceholderColor="#A494BF"/>
 
-                    <!-- Category -->
+                    <!-- Category selection dropdown -->
                     <Picker x:Name="CategoryPicker"
                             Title="Choose category"
                             BackgroundColor="{AppThemeBinding Light=#F7F2FF, Dark=#3A3047}"
@@ -93,7 +99,7 @@
 
                     </Picker>
 
-                    <!-- Description -->
+                    <!-- Detailed description input -->
                     <Editor x:Name="DescriptionEditor"
                             HeightRequest="120"
                             AutoSize="TextChanges"
@@ -105,7 +111,7 @@
 
             </Border>
 
-            <!-- Nutrition Panel -->
+            <!-- Nutrition information panel -->
             <Border BackgroundColor="{AppThemeBinding Light=#FFF8DA, Dark=#4B3B22}"
                     StrokeThickness="0"
                     Padding="18">
@@ -116,16 +122,19 @@
 
                 <VerticalStackLayout Spacing="16">
 
+                    <!-- Nutrition section heading -->
                     <Label Text="NUTRITION VALUES"
                            FontAttributes="Bold"
                            FontSize="15"
                            TextColor="{AppThemeBinding Light=#9A6800, Dark=#FFD978}"/>
 
+                    <!-- Nutrition data input grid -->
                     <Grid ColumnDefinitions="*,*"
                           RowDefinitions="Auto,Auto"
                           ColumnSpacing="12"
                           RowSpacing="12">
 
+                        <!-- Calories input -->
                         <Entry x:Name="CaloriesEntry"
                                Placeholder="Calories"
                                Grid.Row="0"
@@ -134,6 +143,7 @@
                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#3A3047}"
                                TextColor="{AppThemeBinding Light=#4B3B5A, Dark=White}"/>
 
+                        <!-- Protein input -->
                         <Entry x:Name="ProteinEntry"
                                Placeholder="Protein g"
                                Grid.Row="0"
@@ -142,6 +152,7 @@
                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#3A3047}"
                                TextColor="{AppThemeBinding Light=#4B3B5A, Dark=White}"/>
 
+                        <!-- Carbohydrates input -->
                         <Entry x:Name="CarbsEntry"
                                Placeholder="Carbohydrates g"
                                Grid.Row="1"
@@ -150,6 +161,7 @@
                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#3A3047}"
                                TextColor="{AppThemeBinding Light=#4B3B5A, Dark=White}"/>
 
+                        <!-- Fat input -->
                         <Entry x:Name="FatEntry"
                                Placeholder="Fat g"
                                Grid.Row="1"
@@ -164,7 +176,7 @@
 
             </Border>
 
-            <!-- Allergy Notes -->
+            <!-- Dietary and allergy information section -->
             <Border BackgroundColor="{AppThemeBinding Light=#F7F2FF, Dark=#31283C}"
                     Stroke="{AppThemeBinding Light=#D8C5FF, Dark=#4D405D}"
                     Padding="18">
@@ -175,10 +187,12 @@
 
                 <VerticalStackLayout Spacing="10">
 
+                    <!-- Section heading -->
                     <Label Text="DIETARY NOTES"
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#D6BFFF}"/>
 
+                    <!-- Allergy and dietary restriction input -->
                     <Entry x:Name="AllergyEntry"
                            Placeholder="Allergy information or dietary restrictions"
                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#3A3047}"
@@ -189,7 +203,7 @@
 
             </Border>
 
-            <!-- Validation -->
+            <!-- Validation message panel -->
             <Border x:Name="ValidationPanel"
                     IsVisible="False"
                     Padding="14"
@@ -199,13 +213,14 @@
                     <RoundRectangle CornerRadius="18"/>
                 </Border.StrokeShape>
 
+                <!-- Displays validation error messages -->
                 <Label x:Name="ValidationLabel"
                        FontAttributes="Bold"
                        TextColor="{AppThemeBinding Light=#A06B00, Dark=#FFD978}"/>
 
             </Border>
 
-            <!-- Save Button -->
+            <!-- Save button for submitting the record -->
             <Button Text="Save Entry"
                     HeightRequest="62"
                     CornerRadius="28"

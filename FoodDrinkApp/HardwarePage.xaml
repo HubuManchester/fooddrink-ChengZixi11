@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!-- Hardware feature demonstration page -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkApp.HardwarePage"
@@ -8,12 +9,12 @@
 
     <ScrollView>
 
-        <!-- 页面背景 -->
+        <!-- Page background gradient -->
         <ScrollView.Background>
 
             <AppThemeBinding>
 
-                <!-- 浅色模式 -->
+                <!-- Light mode background -->
                 <AppThemeBinding.Light>
 
                     <LinearGradientBrush StartPoint="0,0"
@@ -32,7 +33,7 @@
 
                 </AppThemeBinding.Light>
 
-                <!-- 深色模式 -->
+                <!-- Dark mode background -->
                 <AppThemeBinding.Dark>
 
                     <LinearGradientBrush StartPoint="0,0"
@@ -55,10 +56,11 @@
 
         </ScrollView.Background>
 
+        <!-- Main page layout -->
         <VerticalStackLayout Padding="22"
                              Spacing="16">
 
-            <!-- 顶部标题卡片 -->
+            <!-- Header information card -->
             <Border StrokeThickness="0"
                     Padding="18"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}">
@@ -69,12 +71,14 @@
 
                 <VerticalStackLayout Spacing="6">
 
+                    <!-- Page title -->
                     <Label Text="Mobile Hardware"
                            FontSize="28"
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}"
                            SemanticProperties.HeadingLevel="Level1" />
 
+                    <!-- Page description -->
                     <Label Text="Demonstrate camera, location, speech, vibration, and haptic feedback."
                            FontSize="15"
                            TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
@@ -83,7 +87,7 @@
 
             </Border>
 
-            <!-- Photo 卡片 -->
+            <!-- Camera and photo capture card -->
             <Border StrokeThickness="1"
                     Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
@@ -100,17 +104,20 @@
 
                         <VerticalStackLayout Spacing="3">
 
+                            <!-- Camera section title -->
                             <Label Text="Food Photo"
                                    FontSize="17"
                                    FontAttributes="Bold"
                                    TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#E4DAFF}" />
 
+                            <!-- Camera section description -->
                             <Label Text="Capture the colour and condition of the meal."
                                    FontSize="13"
                                    TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
 
                         </VerticalStackLayout>
 
+                        <!-- Open camera button -->
                         <Button Grid.Column="1"
                                 Text="Photo"
                                 BackgroundColor="#FFE9A8"
@@ -122,7 +129,7 @@
 
                     </Grid>
 
-                    <!-- 图片区域 -->
+                    <!-- Photo preview area -->
                     <Border StrokeThickness="1"
                             Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                             BackgroundColor="{AppThemeBinding Light=#F7F1FF, Dark=#332B47}"
@@ -132,6 +139,7 @@
                             <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
 
+                        <!-- Captured image preview -->
                         <Image x:Name="FoodPhoto"
                                Aspect="AspectFill"
                                SemanticProperties.Description="Captured food photo preview" />
@@ -142,7 +150,7 @@
 
             </Border>
 
-            <!-- Location 卡片 -->
+            <!-- Location service card -->
             <Border StrokeThickness="1"
                     Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
@@ -160,17 +168,20 @@
 
                         <VerticalStackLayout Spacing="3">
 
+                            <!-- Location section title -->
                             <Label Text="Meal Location"
                                    FontSize="17"
                                    FontAttributes="Bold"
                                    TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#E4DAFF}" />
 
+                            <!-- Location section description -->
                             <Label Text="Show country, city, region, and coordinates."
                                    FontSize="13"
                                    TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
 
                         </VerticalStackLayout>
 
+                        <!-- Get current location button -->
                         <Button Grid.Column="1"
                                 Text="Locate"
                                 BackgroundColor="#FFE9A8"
@@ -182,12 +193,14 @@
 
                     </Grid>
 
+                    <!-- Human-readable location -->
                     <Label x:Name="LocationLabel"
                            Grid.Row="1"
                            Text="Location has not been captured yet."
                            FontSize="15"
                            TextColor="{AppThemeBinding Light=#5F5172, Dark=#E6DEFF}" />
 
+                    <!-- Latitude and longitude display -->
                     <Label x:Name="CoordinateLabel"
                            Grid.Row="2"
                            Text="Coordinates will appear here."
@@ -198,10 +211,11 @@
 
             </Border>
 
-            <!-- 语音按钮 -->
+            <!-- Speech control buttons -->
             <Grid ColumnDefinitions="*,*"
                   ColumnSpacing="12">
 
+                <!-- Read help information aloud -->
                 <Button Text="Read Help"
                         BackgroundColor="#FFE9A8"
                         TextColor="#4B3B5A"
@@ -210,6 +224,7 @@
                         Clicked="OnReadHelpClicked"
                         SemanticProperties.Hint="Read the help text aloud" />
 
+                <!-- Stop current speech -->
                 <Button Grid.Column="1"
                         Text="Stop Speech"
                         BackgroundColor="{AppThemeBinding Light=#F7F1FF, Dark=#332B47}"
@@ -223,7 +238,7 @@
 
             </Grid>
 
-            <!-- 震动按钮 -->
+            <!-- Haptic feedback and vibration test button -->
             <Button Text="Haptic Feedback"
                     BackgroundColor="{AppThemeBinding Light=#F7F1FF, Dark=#332B47}"
                     BorderColor="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
@@ -234,7 +249,7 @@
                     Clicked="OnFeedbackClicked"
                     SemanticProperties.Hint="Trigger vibration and haptic feedback" />
 
-            <!-- 状态区域 -->
+            <!-- Hardware status panel -->
             <Border StrokeThickness="1"
                     Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     BackgroundColor="{AppThemeBinding Light=#FFF7D6, Dark=#4A3F1F}"
@@ -246,11 +261,13 @@
 
                 <VerticalStackLayout Spacing="6">
 
+                    <!-- Current hardware operation status -->
                     <Label x:Name="HardwareStatusLabel"
                            Text="Ready."
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#A06B00, Dark=#FFE39A}" />
 
+                    <!-- Haptic feedback test counter -->
                     <Label x:Name="FeedbackCountLabel"
                            Text="Haptic feedback tests: 0"
                            FontSize="13"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
+<!-- Settings page for appearance and accessibility preferences -->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkApp.SettingsPage"
@@ -8,11 +9,11 @@
 
     <ScrollView>
 
-        <!-- 页面背景 -->
+        <!-- Page background -->
         <ScrollView.Background>
             <AppThemeBinding>
 
-                <!-- 浅色 -->
+                <!-- Light theme background gradient -->
                 <AppThemeBinding.Light>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="0,1">
@@ -29,7 +30,7 @@
                     </LinearGradientBrush>
                 </AppThemeBinding.Light>
 
-                <!-- 深色 -->
+                <!-- Dark theme background gradient -->
                 <AppThemeBinding.Dark>
                     <LinearGradientBrush StartPoint="0,0"
                                          EndPoint="0,1">
@@ -52,7 +53,7 @@
         <VerticalStackLayout Padding="22"
                              Spacing="18">
 
-            <!-- 顶部横幅 -->
+            <!-- Top banner section -->
             <Border StrokeThickness="0"
                     Padding="22">
 
@@ -60,10 +61,11 @@
                     <RoundRectangle CornerRadius="28" />
                 </Border.StrokeShape>
 
+                <!-- Banner gradient background -->
                 <Border.Background>
                     <AppThemeBinding>
 
-                        <!-- 浅色 -->
+                        <!-- Light theme banner -->
                         <AppThemeBinding.Light>
                             <LinearGradientBrush StartPoint="0,0"
                                                  EndPoint="1,1">
@@ -80,7 +82,7 @@
                             </LinearGradientBrush>
                         </AppThemeBinding.Light>
 
-                        <!-- 深色 -->
+                        <!-- Dark theme banner -->
                         <AppThemeBinding.Dark>
                             <LinearGradientBrush StartPoint="0,0"
                                                  EndPoint="1,1">
@@ -100,6 +102,7 @@
                     </AppThemeBinding>
                 </Border.Background>
 
+                <!-- Banner shadow effect -->
                 <Border.Shadow>
                     <Shadow Brush="#22000000"
                             Offset="0,5"
@@ -109,12 +112,14 @@
 
                 <VerticalStackLayout Spacing="8">
 
+                    <!-- Main page title -->
                     <Label Text="Personal Preferences"
                            FontSize="30"
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}"
                            SemanticProperties.HeadingLevel="Level1" />
 
+                    <!-- Page description -->
                     <Label Text="Adjust appearance and reading comfort for a smoother experience across the app."
                            FontSize="15"
                            TextColor="{AppThemeBinding Light=#66587B, Dark=#D7CFFF}" />
@@ -123,7 +128,7 @@
 
             </Border>
 
-            <!-- 外观设置 -->
+            <!-- Appearance settings section -->
             <Border Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     StrokeThickness="1"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
@@ -135,9 +140,11 @@
 
                 <VerticalStackLayout Spacing="18">
 
+                    <!-- Appearance section header -->
                     <Grid ColumnDefinitions="Auto,*"
                           ColumnSpacing="12">
 
+                        <!-- Appearance icon container -->
                         <Border WidthRequest="42"
                                 HeightRequest="42"
                                 BackgroundColor="{AppThemeBinding Light=#F5EEFF, Dark=#43365E}"
@@ -154,6 +161,7 @@
 
                         </Border>
 
+                        <!-- Appearance title and description -->
                         <VerticalStackLayout Grid.Column="1"
                                              Spacing="2">
 
@@ -170,7 +178,7 @@
 
                     </Grid>
 
-                    <!-- Picker -->
+                    <!-- Theme selection picker -->
                     <Picker x:Name="ThemePicker"
                             Title="Select visual mode"
                             SelectedIndexChanged="OnThemeChanged"
@@ -190,7 +198,7 @@
 
             </Border>
 
-            <!-- 字体设置 -->
+            <!-- Accessibility and font size settings section -->
             <Border Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     StrokeThickness="1"
                     BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
@@ -202,9 +210,11 @@
 
                 <VerticalStackLayout Spacing="16">
 
+                    <!-- Large text mode control -->
                     <Grid ColumnDefinitions="*,Auto"
                           ColumnSpacing="12">
 
+                        <!-- Accessibility description -->
                         <VerticalStackLayout Spacing="4">
 
                             <Label Text="Comfort Reading"
@@ -218,6 +228,7 @@
 
                         </VerticalStackLayout>
 
+                        <!-- Accessibility switch -->
                         <Switch x:Name="LargeTextSwitch"
                                 Grid.Column="1"
                                 OnColor="#CDB4FF"
@@ -227,7 +238,7 @@
 
                     </Grid>
 
-                    <!-- 提示区域 -->
+                    <!-- Information message -->
                     <Border BackgroundColor="{AppThemeBinding Light=#FFF7D8, Dark=#4A3F1F}"
                             StrokeThickness="0"
                             Padding="14">
@@ -238,9 +249,11 @@
 
                         <HorizontalStackLayout Spacing="10">
 
+                            <!-- Hint icon -->
                             <Label Text="💡"
                                    FontSize="20" />
 
+                            <!-- Hint message -->
                             <Label Text="Changes apply instantly across food, detail, and hardware pages."
                                    FontSize="13"
                                    TextColor="{AppThemeBinding Light=#8A6A00, Dark=#FFE39A}"
@@ -254,7 +267,7 @@
 
             </Border>
 
-            <!-- 预览区域 -->
+            <!-- Live preview section -->
             <Border Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     StrokeThickness="1"
                     BackgroundColor="{AppThemeBinding Light=#F9F5FF, Dark=#332B47}"
@@ -266,17 +279,20 @@
 
                 <VerticalStackLayout Spacing="10">
 
+                    <!-- Preview title -->
                     <Label Text="Preview Area"
                            FontSize="14"
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#D8CFFF}" />
 
+                    <!-- Preview heading -->
                     <Label x:Name="LargeTextPreviewTitle"
                            Text="Reading Example"
                            FontSize="22"
                            FontAttributes="Bold"
                            TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}" />
 
+                    <!-- Preview body text -->
                     <Label x:Name="LargeTextPreviewBody"
                            Text="This sample text changes size automatically when accessibility mode is enabled."
                            FontSize="15"
@@ -286,7 +302,7 @@
 
             </Border>
 
-            <!-- 状态 -->
+            <!-- Settings status area -->
             <Border BackgroundColor="{AppThemeBinding Light=#FFF4C6, Dark=#4A3F1F}"
                     StrokeThickness="0"
                     Padding="14">
@@ -295,6 +311,7 @@
                     <RoundRectangle CornerRadius="18" />
                 </Border.StrokeShape>
 
+                <!-- Status message label -->
                 <Label x:Name="SettingsStatusLabel"
                        Text="Preference panel ready."
                        FontAttributes="Bold"

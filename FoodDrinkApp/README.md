@@ -1,58 +1,283 @@
-# 食光营养助手
+# FoodTime Nutrition Assistant (FoodDrinkApp)
 
-食光营养助手是一个基于 .NET MAUI 的“食品与饮品”课程项目应用。应用可以记录食品和饮品，展示营养摘要，验证用户输入，并演示移动设备硬件功能。
+A cross-platform food and beverage nutrition tracking application developed with **.NET MAUI**, supporting both **Android** and **Windows** platforms. The application integrates mobile hardware capabilities and accessibility features, providing a complete solution for food logging, nutrition tracking, hardware interaction, and personalized display settings.
 
-## 主要功能
 
-- 食品和饮品列表，支持搜索和详情页。
-- 添加记录表单，检查必填项和营养数值。
-- 使用相机拍摄食品照片并预览。
-- 使用定位记录用餐或购买地点。
-- 使用文字转语音朗读营养摘要和帮助内容。
-- 使用震动与触觉反馈提供操作提醒。
-- 支持主题切换和大字体模式。
-- 包含语义标签、屏幕阅读器播报和清晰的验证提示。
+Author:Cheng Zixi 21906411
 
-## 评分点覆盖
 
-- UI/UX 与无障碍：XAML 页面、底部导航、一致的视觉风格、深色模式、语义描述和屏幕阅读器播报。
-- 移动硬件：相机、定位、文字转语音、震动和触觉反馈。
-- 功能完整性：列表、搜索、添加、详情、设置和硬件演示流程。
-- 验证与错误处理：必填项检查、数字检查、权限错误和硬件不可用提示。
-- 代码质量：模型和服务分离、命名清晰、可复用的目录服务，以及范围清晰的页面代码。
-- 部署：面向 Android 和 Windows 的 .NET MAUI 跨平台应用。
-- GitHub 使用：建议持续提交，例如 `添加食品列表`、`实现硬件页面`、`添加输入验证`。
+---
 
-## 运行方式
+# Table of Contents
 
-使用安装了 .NET MAUI 工作负载的 Visual Studio 2022 打开 `FoodDrinkApp.csproj` 或 `FoodDrinkApp.sln`。
+1. Project Overview
+2. Core Features
+3. Project Structure
+4. Core Modules and File Descriptions
+5. Environment Setup, Build and Run Guide
 
-推荐演示目标：
+---
 
-- Android 模拟器
-- Windows Machine
+# 1. Project Overview
 
-Windows 构建命令：
+**FoodTime Nutrition Assistant** is a cross-platform application built with .NET MAUI. The project focuses on food and beverage management, allowing users to record foods and drinks, view nutritional information, and automatically summarize nutrition data.
 
-```powershell
-dotnet build .\FoodDrinkApp.csproj -f net9.0-windows10.0.19041.0
+The application deeply integrates native mobile device capabilities including:
+
+* Camera access
+* Geolocation services
+* Text-to-Speech (TTS)
+* Device vibration
+* Haptic feedback
+
+The project also follows accessibility best practices by supporting:
+
+* Light and Dark themes
+* Large font mode
+* Screen reader semantic descriptions
+
+A layered architecture separates data models, business services, and UI pages, making the project maintainable and extensible. The application connects to a MockAPI cloud service for online data storage and automatically falls back to local data when offline.
+
+---
+
+# 2. Core Features
+
+## Food & Beverage Management
+
+* Home page displaying food and beverage records using card-based layouts
+* Global search functionality
+* Add new food and beverage records
+* Nutrition detail page
+* Pull-to-refresh support for cloud synchronization
+
+## Mobile Hardware Features
+
+### Camera
+
+* Capture food photos using the device camera
+
+### Location Services
+
+* Obtain GPS coordinates
+* Reverse geocoding to retrieve country, city, and region information
+
+### Text-to-Speech (TTS)
+
+* Read nutrition summaries aloud
+* Read application help content
+
+### Speech Control
+
+* Manual stop button
+* Automatically stops when leaving the page
+
+### Device Vibration
+
+* Triggered during validation failures
+* Used for nutrition reminders
+
+### Haptic Feedback
+
+* Dedicated testing button
+* Includes usage counter for verification
+
+## Accessibility & Personalization
+
+### Theme Modes
+
+* Light Mode
+* Dark Mode
+* Follow System Theme
+
+### Large Font Mode
+
+* One-click global font scaling
+
+### Screen Reader Support
+
+* Semantic descriptions for controls
+* Accessibility labels throughout the application
+
+### Food-Themed UI Design
+
+* Warm color palette
+* Consistent food and beverage branding
+
+## Data Management & Error Handling
+
+* MockAPI cloud storage
+* Local fallback data when offline
+* Form validation
+* Exception handling for all hardware integrations
+* Layered application architecture
+
+---
+
+# 3. Project Structure
+
+```text
+FoodDrinkApp/
+
+├── App.xaml
+├── App.xaml.cs
+
+├── AppShell.xaml
+├── AppShell.xaml.cs
+
+├── MainPage.xaml
+├── MainPage.xaml.cs
+
+├── AddItemPage.xaml
+├── AddItemPage.xaml.cs
+
+├── FoodDetailPage.xaml
+├── FoodDetailPage.xaml.cs
+
+├── HardwarePage.xaml
+├── HardwarePage.xaml.cs
+
+├── SettingsPage.xaml
+├── SettingsPage.xaml.cs
+
+├── Directory.Build.props
+├── FoodDrinkApp.csproj
+
+├── MockAPI Configuration Guide.md
+├── Project Development Guide.md
+
+├── Models/
+│   └── FoodItem.cs
+
+├── Services/
+│   ├── AccessibilityService.cs
+│   ├── FoodCatalogService.cs
+│   ├── MockApiConfig.cs
+│   └── SpeechService.cs
+
+├── Platforms/
+│   └── Android/
+│       └── AndroidManifest.xml
+
+└── Resources/
+    └── Styles/
+        ├── Colors.xaml
+        └── Styles.xaml
 ```
 
-Android 构建命令：
+---
 
-```powershell
-dotnet build .\FoodDrinkApp.csproj -f net9.0-android
+# 4. Core Modules and File Descriptions
+
+## App.xaml / App.xaml.cs
+
+Application startup and global resource initialization.
+
+```csharp
+return new Window(new AppShell());
 ```
 
-本项目通过 `Directory.Build.props` 将构建输出放到 `C:\MauiBuild\NutriTrack\`，用于规避 Android 打包工具在中文路径下的 `assets` 路径问题。
+## AppShell.xaml / AppShell.xaml.cs
 
-## 录屏演示清单
+Defines navigation structure and routes.
 
-- 说明“食品与饮品”主题和“食光营养助手”的应用概念。
-- 展示搜索、详情页和添加新记录。
-- 演示不填必填项、输入非法数字时的验证提示。
-- 演示相机、定位、文字转语音、震动和触觉反馈。
-- 展示深色模式和大字体模式。
-- 展示关键代码文件：模型、服务、页面和 Android 权限配置。
-- 展示 Android 和 Windows 部署效果。
-- 展示 GitHub 提交历史和 README。
+```csharp
+Routing.RegisterRoute(nameof(AddItemPage), typeof(AddItemPage));
+Routing.RegisterRoute(nameof(FoodDetailPage), typeof(FoodDetailPage));
+```
+
+## MainPage
+
+Home page displaying food items, search functionality, and refresh support.
+
+```csharp
+FoodCollection.ItemsSource = FoodCatalogService.Search(query);
+```
+
+## AddItemPage
+
+Food entry form including:
+
+* Required field validation
+* Non-negative nutrition validation
+* Vibration feedback on validation failure
+
+Validation Rules:
+
+1. Name cannot be empty
+2. Category cannot be empty
+3. Description cannot be empty
+4. Nutrition values must be zero or greater
+
+## FoodDetailPage
+
+Displays detailed nutrition information.
+
+Features:
+
+* Nutrition summary reading
+* Speech stop button
+* Vibration reminder
+* Automatic speech termination
+
+```csharp
+protected override void OnDisappearing()
+{
+    SpeechService.Stop();
+    base.OnDisappearing();
+}
+```
+
+## HardwarePage
+
+Demonstrates hardware integrations:
+
+1. Camera
+2. GPS Location
+3. Reverse Geocoding
+4. Text-to-Speech
+5. Vibration
+6. Haptic Feedback
+
+## SettingsPage
+
+Provides:
+
+* Theme switching
+* Accessibility settings
+* Large font mode
+
+---
+
+# 5. Environment Setup, Build and Run Guide
+
+## Required Environment
+
+1. Visual Studio 2022
+2. .NET MAUI Workload
+3. Android SDK
+4. Windows 10/11
+5. Android Emulator or Physical Device
+
+---
+
+## Troubleshooting
+
+### Android Startup Failure
+
+Ensure an emulator or physical Android device is connected.
+
+### Incorrect Location Results
+
+Configure emulator GPS coordinates manually or use a physical device.
+
+---
+
+# Author
+
+Cheng Zixi 21906411
+
+FoodTime Nutrition Assistant (FoodDrinkApp)
+
+Cross-Platform Food & Beverage Nutrition Tracking Application
+
+Developed using .NET MAUI for Android and Windows platforms.

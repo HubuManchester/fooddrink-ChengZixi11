@@ -1,28 +1,45 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+
+<!-- Application root configuration -->
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FoodDrinkApp"
              x:Class="FoodDrinkApp.App">
 
+    <!-- Global application resources -->
     <Application.Resources>
 
         <ResourceDictionary>
 
+            <!-- Merge external resource dictionaries -->
             <ResourceDictionary.MergedDictionaries>
+
+                <!-- Global color definitions -->
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+
+                <!-- Global control styles -->
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- 浅紫主题 -->
+            <!-- Light purple theme colors -->
+
+            <!-- Main page background color -->
             <Color x:Key="MainBackgroundColor">#F6F0FF</Color>
+
+            <!-- Primary card background color -->
             <Color x:Key="CardPurple">#D9C2FF</Color>
+
+            <!-- Secondary soft purple color -->
             <Color x:Key="SoftPurple">#EEE4FF</Color>
 
-            <!-- 按钮浅黄 -->
+            <!-- Light yellow button color -->
             <Color x:Key="ButtonYellow">#FFE9A8</Color>
 
-            <!-- 文字 -->
+            <!-- Primary text color -->
             <Color x:Key="PrimaryText">#4B3B5A</Color>
+
+            <!-- Secondary text color -->
             <Color x:Key="SecondaryText">#7B6D8D</Color>
 
         </ResourceDictionary>
