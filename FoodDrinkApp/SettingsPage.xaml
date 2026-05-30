@@ -3,104 +3,218 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkApp.SettingsPage"
-             Title="Settings">
+             Title="Preferences"
+             BackgroundColor="{AppThemeBinding Light=#F7F2FF, Dark=#1F1B2E}">
 
     <ScrollView>
 
         <!-- 页面背景 -->
         <ScrollView.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#F6F0FF" Offset="0.0" />
-                <GradientStop Color="#F2EAFF" Offset="0.5" />
-                <GradientStop Color="#EEE4FF" Offset="1.0" />
-            </LinearGradientBrush>
+            <AppThemeBinding>
+
+                <!-- 浅色 -->
+                <AppThemeBinding.Light>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,1">
+
+                        <GradientStop Color="#F7F2FF"
+                                      Offset="0.0" />
+
+                        <GradientStop Color="#EEE5FF"
+                                      Offset="0.55" />
+
+                        <GradientStop Color="#FFF9DD"
+                                      Offset="1.0" />
+
+                    </LinearGradientBrush>
+                </AppThemeBinding.Light>
+
+                <!-- 深色 -->
+                <AppThemeBinding.Dark>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,1">
+
+                        <GradientStop Color="#1F1B2E"
+                                      Offset="0.0" />
+
+                        <GradientStop Color="#2A243B"
+                                      Offset="0.55" />
+
+                        <GradientStop Color="#352D4A"
+                                      Offset="1.0" />
+
+                    </LinearGradientBrush>
+                </AppThemeBinding.Dark>
+
+            </AppThemeBinding>
         </ScrollView.Background>
 
         <VerticalStackLayout Padding="22"
-                             Spacing="16">
+                             Spacing="18">
 
-            <!-- 顶部标题 -->
+            <!-- 顶部横幅 -->
             <Border StrokeThickness="0"
-                    Padding="18"
-                    BackgroundColor="#FFFFFF">
+                    Padding="22">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="20" />
+                    <RoundRectangle CornerRadius="28" />
                 </Border.StrokeShape>
 
-                <VerticalStackLayout Spacing="6">
+                <Border.Background>
+                    <AppThemeBinding>
 
-                    <Label Text="Accessibility Settings"
-                           FontSize="28"
+                        <!-- 浅色 -->
+                        <AppThemeBinding.Light>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="1,1">
+
+                                <GradientStop Color="#D8C3FF"
+                                              Offset="0.0" />
+
+                                <GradientStop Color="#EEE5FF"
+                                              Offset="0.7" />
+
+                                <GradientStop Color="#FFF4C6"
+                                              Offset="1.0" />
+
+                            </LinearGradientBrush>
+                        </AppThemeBinding.Light>
+
+                        <!-- 深色 -->
+                        <AppThemeBinding.Dark>
+                            <LinearGradientBrush StartPoint="0,0"
+                                                 EndPoint="1,1">
+
+                                <GradientStop Color="#3A2F56"
+                                              Offset="0.0" />
+
+                                <GradientStop Color="#4A3C6A"
+                                              Offset="0.7" />
+
+                                <GradientStop Color="#5B4B7A"
+                                              Offset="1.0" />
+
+                            </LinearGradientBrush>
+                        </AppThemeBinding.Dark>
+
+                    </AppThemeBinding>
+                </Border.Background>
+
+                <Border.Shadow>
+                    <Shadow Brush="#22000000"
+                            Offset="0,5"
+                            Radius="14"
+                            Opacity="0.20" />
+                </Border.Shadow>
+
+                <VerticalStackLayout Spacing="8">
+
+                    <Label Text="Personal Preferences"
+                           FontSize="30"
                            FontAttributes="Bold"
-                           TextColor="#4B3B5A"
+                           TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}"
                            SemanticProperties.HeadingLevel="Level1" />
 
-                    <Label Text="Large text takes effect immediately and remains active when switching pages."
+                    <Label Text="Adjust appearance and reading comfort for a smoother experience across the app."
                            FontSize="15"
-                           TextColor="#6D5D82" />
+                           TextColor="{AppThemeBinding Light=#66587B, Dark=#D7CFFF}" />
 
                 </VerticalStackLayout>
 
             </Border>
 
-            <!-- 设置卡片 -->
-            <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFFFFF"
-                    Padding="16">
+            <!-- 外观设置 -->
+            <Border Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                    StrokeThickness="1"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
+                    Padding="18">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="18" />
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="18">
+
+                    <Grid ColumnDefinitions="Auto,*"
+                          ColumnSpacing="12">
+
+                        <Border WidthRequest="42"
+                                HeightRequest="42"
+                                BackgroundColor="{AppThemeBinding Light=#F5EEFF, Dark=#43365E}"
+                                StrokeThickness="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14" />
+                            </Border.StrokeShape>
+
+                            <Label Text="🎨"
+                                   FontSize="22"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1"
+                                             Spacing="2">
+
+                            <Label Text="Appearance"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="{AppThemeBinding Light=#7255A2, Dark=#E4DAFF}" />
+
+                            <Label Text="Choose how the application looks on your device."
+                                   FontSize="13"
+                                   TextColor="{AppThemeBinding Light=#7A6B92, Dark=#CFC3EA}" />
+
+                        </VerticalStackLayout>
+
+                    </Grid>
+
+                    <!-- Picker -->
+                    <Picker x:Name="ThemePicker"
+                            Title="Select visual mode"
+                            SelectedIndexChanged="OnThemeChanged"
+                            TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}"
+                            BackgroundColor="{AppThemeBinding Light=#F8F3FF, Dark=#3A3152}"
+                            SemanticProperties.Hint="Select application appearance">
+
+                        <Picker.Items>
+                            <x:String>Follow device setting</x:String>
+                            <x:String>Always light mode</x:String>
+                            <x:String>Always dark mode</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- 字体设置 -->
+            <Border Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                    StrokeThickness="1"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
+                    Padding="18">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
                 </Border.StrokeShape>
 
                 <VerticalStackLayout Spacing="16">
 
-                    <!-- Theme -->
-                    <Grid RowDefinitions="Auto,Auto"
-                          RowSpacing="8">
-
-                        <Label Text="Theme Mode"
-                               FontSize="17"
-                               FontAttributes="Bold"
-                               TextColor="#8B6FB3" />
-
-                        <Picker x:Name="ThemePicker"
-                                Grid.Row="1"
-                                Title="Choose app theme"
-                                SelectedIndexChanged="OnThemeChanged"
-                                TextColor="#4B3B5A"
-                                BackgroundColor="#F7F1FF"
-                                SemanticProperties.Hint="Switch between system, light, and dark theme">
-
-                            <Picker.Items>
-                                <x:String>Use system theme</x:String>
-                                <x:String>Light theme</x:String>
-                                <x:String>Dark theme</x:String>
-                            </Picker.Items>
-
-                        </Picker>
-
-                    </Grid>
-
-                    <!-- 分割线 -->
-                    <BoxView HeightRequest="1"
-                             Color="#D6C2FF" />
-
-                    <!-- Large Text -->
                     <Grid ColumnDefinitions="*,Auto"
-                          ColumnSpacing="14">
+                          ColumnSpacing="12">
 
                         <VerticalStackLayout Spacing="4">
 
-                            <Label Text="Large Text Mode"
-                                   FontSize="17"
+                            <Label Text="Comfort Reading"
+                                   FontSize="18"
                                    FontAttributes="Bold"
-                                   TextColor="#8B6FB3" />
+                                   TextColor="{AppThemeBinding Light=#7255A2, Dark=#E4DAFF}" />
 
-                            <Label Text="Increase text size for accessibility demonstration."
+                            <Label Text="Enable larger text to improve readability while browsing food details."
                                    FontSize="13"
-                                   TextColor="#6D5D82" />
+                                   TextColor="{AppThemeBinding Light=#7A6B92, Dark=#CFC3EA}" />
 
                         </VerticalStackLayout>
 
@@ -109,46 +223,85 @@
                                 OnColor="#CDB4FF"
                                 ThumbColor="#FFE9A8"
                                 Toggled="OnLargeTextToggled"
-                                SemanticProperties.Hint="Increase text size across the current session" />
+                                SemanticProperties.Hint="Enable larger text mode" />
 
                     </Grid>
+
+                    <!-- 提示区域 -->
+                    <Border BackgroundColor="{AppThemeBinding Light=#FFF7D8, Dark=#4A3F1F}"
+                            StrokeThickness="0"
+                            Padding="14">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18" />
+                        </Border.StrokeShape>
+
+                        <HorizontalStackLayout Spacing="10">
+
+                            <Label Text="💡"
+                                   FontSize="20" />
+
+                            <Label Text="Changes apply instantly across food, detail, and hardware pages."
+                                   FontSize="13"
+                                   TextColor="{AppThemeBinding Light=#8A6A00, Dark=#FFE39A}"
+                                   VerticalTextAlignment="Center" />
+
+                        </HorizontalStackLayout>
+
+                    </Border>
 
                 </VerticalStackLayout>
 
             </Border>
 
-            <!-- 预览卡片 -->
-            <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFF7D6"
-                    Padding="16">
+            <!-- 预览区域 -->
+            <Border Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                    StrokeThickness="1"
+                    BackgroundColor="{AppThemeBinding Light=#F9F5FF, Dark=#332B47}"
+                    Padding="18">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="24" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="10">
+
+                    <Label Text="Preview Area"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#D8CFFF}" />
+
+                    <Label x:Name="LargeTextPreviewTitle"
+                           Text="Reading Example"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}" />
+
+                    <Label x:Name="LargeTextPreviewBody"
+                           Text="This sample text changes size automatically when accessibility mode is enabled."
+                           FontSize="15"
+                           TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- 状态 -->
+            <Border BackgroundColor="{AppThemeBinding Light=#FFF4C6, Dark=#4A3F1F}"
+                    StrokeThickness="0"
+                    Padding="14">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="18" />
                 </Border.StrokeShape>
 
-                <VerticalStackLayout Spacing="8">
-
-                    <Label x:Name="LargeTextPreviewTitle"
-                           Text="Large Text Preview"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="#A06B00" />
-
-                    <Label x:Name="LargeTextPreviewBody"
-                           Text="When enabled, this text and the rest of the page become visibly larger."
-                           FontSize="15"
-                           TextColor="#6D5D82" />
-
-                </VerticalStackLayout>
+                <Label x:Name="SettingsStatusLabel"
+                       Text="Preference panel ready."
+                       FontAttributes="Bold"
+                       FontSize="14"
+                       TextColor="{AppThemeBinding Light=#8A6400, Dark=#FFE39A}" />
 
             </Border>
-
-            <!-- 底部状态 -->
-            <Label x:Name="SettingsStatusLabel"
-                   Text="Settings ready."
-                   FontAttributes="Bold"
-                   TextColor="#8B6FB3" />
 
         </VerticalStackLayout>
 

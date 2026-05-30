@@ -7,6 +7,7 @@ public partial class SettingsPage : ContentPage
     public SettingsPage()
     {
         InitializeComponent();
+
         ThemePicker.SelectedIndex = 0;
         LargeTextSwitch.IsToggled = AccessibilityService.LargeTextEnabled;
     }
@@ -14,6 +15,7 @@ public partial class SettingsPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
         LargeTextSwitch.IsToggled = AccessibilityService.LargeTextEnabled;
         ApplyLargeTextState();
     }
@@ -27,16 +29,18 @@ public partial class SettingsPage : ContentPage
             _ => AppTheme.Unspecified
         };
 
-        Announce("Theme preference updated.");
+        Announce("Display theme updated.");
     }
 
     private void OnLargeTextToggled(object? sender, ToggledEventArgs e)
     {
         AccessibilityService.LargeTextEnabled = e.Value;
+
         ApplyLargeTextState();
+
         Announce(e.Value
-            ? "Large text mode is on. Page text is now larger."
-            : "Large text mode is off. Page text has returned to normal.");
+            ? "Large text has been enabled."
+            : "Large text has been disabled.");
     }
 
     private void ApplyLargeTextState()
@@ -44,11 +48,12 @@ public partial class SettingsPage : ContentPage
         AccessibilityService.ApplyFontScale(this);
 
         LargeTextPreviewTitle.Text = AccessibilityService.LargeTextEnabled
-            ? "Large text preview: enlarged"
-            : "Large text preview";
+            ? "Preview Mode: Expanded Text"
+            : "Preview Mode";
+
         LargeTextPreviewBody.Text = AccessibilityService.LargeTextEnabled
-            ? "Text is now noticeably larger. The food and hardware pages will use the same setting."
-            : "Turn on the switch to enlarge this preview and other page text.";
+            ? "Larger text is active across the application pages."
+            : "Enable the switch above to increase text size throughout the app.";
     }
 
     private void Announce(string message)

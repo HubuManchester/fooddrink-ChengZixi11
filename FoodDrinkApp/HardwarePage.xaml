@@ -3,17 +3,56 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkApp.HardwarePage"
-             Title="Hardware Demo">
+             Title="Hardware Demo"
+             BackgroundColor="{AppThemeBinding Light=#F6F0FF, Dark=#1F1B2E}">
 
     <ScrollView>
 
         <!-- 页面背景 -->
         <ScrollView.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#F6F0FF" Offset="0.0" />
-                <GradientStop Color="#F2EAFF" Offset="0.5" />
-                <GradientStop Color="#EEE4FF" Offset="1.0" />
-            </LinearGradientBrush>
+
+            <AppThemeBinding>
+
+                <!-- 浅色模式 -->
+                <AppThemeBinding.Light>
+
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,1">
+
+                        <GradientStop Color="#F6F0FF"
+                                      Offset="0.0" />
+
+                        <GradientStop Color="#F2EAFF"
+                                      Offset="0.5" />
+
+                        <GradientStop Color="#EEE4FF"
+                                      Offset="1.0" />
+
+                    </LinearGradientBrush>
+
+                </AppThemeBinding.Light>
+
+                <!-- 深色模式 -->
+                <AppThemeBinding.Dark>
+
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,1">
+
+                        <GradientStop Color="#1F1B2E"
+                                      Offset="0.0" />
+
+                        <GradientStop Color="#2A243B"
+                                      Offset="0.5" />
+
+                        <GradientStop Color="#352D4A"
+                                      Offset="1.0" />
+
+                    </LinearGradientBrush>
+
+                </AppThemeBinding.Dark>
+
+            </AppThemeBinding>
+
         </ScrollView.Background>
 
         <VerticalStackLayout Padding="22"
@@ -22,7 +61,7 @@
             <!-- 顶部标题卡片 -->
             <Border StrokeThickness="0"
                     Padding="18"
-                    BackgroundColor="#FFFFFF">
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}">
 
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="20" />
@@ -33,12 +72,12 @@
                     <Label Text="Mobile Hardware"
                            FontSize="28"
                            FontAttributes="Bold"
-                           TextColor="#4B3B5A"
+                           TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EEFF}"
                            SemanticProperties.HeadingLevel="Level1" />
 
                     <Label Text="Demonstrate camera, location, speech, vibration, and haptic feedback."
                            FontSize="15"
-                           TextColor="#6D5D82" />
+                           TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
 
                 </VerticalStackLayout>
 
@@ -46,8 +85,8 @@
 
             <!-- Photo 卡片 -->
             <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFFFFF"
+                    Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
                     Padding="16">
 
                 <Border.StrokeShape>
@@ -64,11 +103,11 @@
                             <Label Text="Food Photo"
                                    FontSize="17"
                                    FontAttributes="Bold"
-                                   TextColor="#8B6FB3" />
+                                   TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#E4DAFF}" />
 
                             <Label Text="Capture the colour and condition of the meal."
                                    FontSize="13"
-                                   TextColor="#6D5D82" />
+                                   TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
 
                         </VerticalStackLayout>
 
@@ -85,8 +124,8 @@
 
                     <!-- 图片区域 -->
                     <Border StrokeThickness="1"
-                            Stroke="#D6C2FF"
-                            BackgroundColor="#F7F1FF"
+                            Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                            BackgroundColor="{AppThemeBinding Light=#F7F1FF, Dark=#332B47}"
                             HeightRequest="220">
 
                         <Border.StrokeShape>
@@ -105,8 +144,8 @@
 
             <!-- Location 卡片 -->
             <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFFFFF"
+                    Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2A243B}"
                     Padding="16">
 
                 <Border.StrokeShape>
@@ -124,11 +163,11 @@
                             <Label Text="Meal Location"
                                    FontSize="17"
                                    FontAttributes="Bold"
-                                   TextColor="#8B6FB3" />
+                                   TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#E4DAFF}" />
 
                             <Label Text="Show country, city, region, and coordinates."
                                    FontSize="13"
-                                   TextColor="#6D5D82" />
+                                   TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
 
                         </VerticalStackLayout>
 
@@ -147,13 +186,13 @@
                            Grid.Row="1"
                            Text="Location has not been captured yet."
                            FontSize="15"
-                           TextColor="#5F5172" />
+                           TextColor="{AppThemeBinding Light=#5F5172, Dark=#E6DEFF}" />
 
                     <Label x:Name="CoordinateLabel"
                            Grid.Row="2"
                            Text="Coordinates will appear here."
                            FontSize="13"
-                           TextColor="#9A8AB5" />
+                           TextColor="{AppThemeBinding Light=#9A8AB5, Dark=#CFC3EA}" />
 
                 </Grid>
 
@@ -173,10 +212,10 @@
 
                 <Button Grid.Column="1"
                         Text="Stop Speech"
-                        BackgroundColor="#F7F1FF"
-                        BorderColor="#D6C2FF"
+                        BackgroundColor="{AppThemeBinding Light=#F7F1FF, Dark=#332B47}"
+                        BorderColor="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                         BorderWidth="1"
-                        TextColor="#6D5D82"
+                        TextColor="{AppThemeBinding Light=#6D5D82, Dark=#E6DEFF}"
                         CornerRadius="14"
                         FontAttributes="Bold"
                         Clicked="OnStopSpeechClicked"
@@ -186,10 +225,10 @@
 
             <!-- 震动按钮 -->
             <Button Text="Haptic Feedback"
-                    BackgroundColor="#F7F1FF"
-                    BorderColor="#D6C2FF"
+                    BackgroundColor="{AppThemeBinding Light=#F7F1FF, Dark=#332B47}"
+                    BorderColor="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
                     BorderWidth="1"
-                    TextColor="#6D5D82"
+                    TextColor="{AppThemeBinding Light=#6D5D82, Dark=#E6DEFF}"
                     CornerRadius="14"
                     FontAttributes="Bold"
                     Clicked="OnFeedbackClicked"
@@ -197,8 +236,8 @@
 
             <!-- 状态区域 -->
             <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFF7D6"
+                    Stroke="{AppThemeBinding Light=#D6C2FF, Dark=#5C4B7D}"
+                    BackgroundColor="{AppThemeBinding Light=#FFF7D6, Dark=#4A3F1F}"
                     Padding="14">
 
                 <Border.StrokeShape>
@@ -210,12 +249,12 @@
                     <Label x:Name="HardwareStatusLabel"
                            Text="Ready."
                            FontAttributes="Bold"
-                           TextColor="#A06B00" />
+                           TextColor="{AppThemeBinding Light=#A06B00, Dark=#FFE39A}" />
 
                     <Label x:Name="FeedbackCountLabel"
                            Text="Haptic feedback tests: 0"
                            FontSize="13"
-                           TextColor="#6D5D82" />
+                           TextColor="{AppThemeBinding Light=#6D5D82, Dark=#D4CAE9}" />
 
                 </VerticalStackLayout>
 

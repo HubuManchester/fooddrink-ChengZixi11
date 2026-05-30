@@ -44,6 +44,7 @@ public partial class HardwarePage : ContentPage
             using var memoryStream = new MemoryStream();
             await stream.CopyToAsync(memoryStream);
             var imageBytes = memoryStream.ToArray();
+
             FoodPhoto.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
             SetStatus("Food photo captured successfully.");
             HapticFeedback.Default.Perform(HapticFeedbackType.Click);
@@ -99,9 +100,7 @@ public partial class HardwarePage : ContentPage
                 return address;
             }
         }
-        catch
-        {
-        }
+        catch { }
 
         return BuildFallbackAddress(location);
     }

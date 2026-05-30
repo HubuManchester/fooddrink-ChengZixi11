@@ -3,114 +3,137 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FoodDrinkApp.AddItemPage"
-             Title="Add Record">
+             Title="Add Record"
+             BackgroundColor="{AppThemeBinding Light=#F7F2FF, Dark=#1E1A24}">
 
     <ScrollView>
 
         <!-- 页面背景 -->
         <ScrollView.Background>
-            <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="0,1">
+            <AppThemeBinding>
 
-                <GradientStop Color="#F6F0FF"
-                              Offset="0.0" />
+                <!-- Light -->
+                <AppThemeBinding.Light>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,1">
 
-                <GradientStop Color="#F2EAFF"
-                              Offset="0.5" />
+                        <GradientStop Color="#F7F2FF"
+                                      Offset="0.0" />
 
-                <GradientStop Color="#EEE4FF"
-                              Offset="1.0" />
+                        <GradientStop Color="#EEE4FF"
+                                      Offset="0.55" />
 
-            </LinearGradientBrush>
+                        <GradientStop Color="#FFF7D9"
+                                      Offset="1.0" />
+
+                    </LinearGradientBrush>
+                </AppThemeBinding.Light>
+
+                <!-- Dark -->
+                <AppThemeBinding.Dark>
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="0,1">
+
+                        <GradientStop Color="#1E1A24"
+                                      Offset="0.0" />
+
+                        <GradientStop Color="#262031"
+                                      Offset="0.5" />
+
+                        <GradientStop Color="#2D2537"
+                                      Offset="1.0" />
+
+                    </LinearGradientBrush>
+                </AppThemeBinding.Dark>
+
+            </AppThemeBinding>
         </ScrollView.Background>
 
         <VerticalStackLayout Padding="22"
                              Spacing="18">
 
-            <!-- 顶部标题卡片 -->
+            <!-- 顶部区域 -->
             <Border StrokeThickness="0"
-                    Padding="20"
-                    BackgroundColor="#FFFFFF">
+                    Padding="22"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#31283C}">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="22" />
+                    <RoundRectangle CornerRadius="28" />
                 </Border.StrokeShape>
 
                 <Border.Shadow>
-                    <Shadow Brush="#15000000"
-                            Offset="0,3"
-                            Radius="8"
-                            Opacity="0.12" />
+                    <Shadow Brush="#22000000"
+                            Offset="0,4"
+                            Radius="12"
+                            Opacity="0.18" />
                 </Border.Shadow>
 
-                <Grid RowDefinitions="Auto,Auto"
-                      RowSpacing="8">
+                <VerticalStackLayout Spacing="8">
 
-                    <Label Text="Add food or drink"
+                    <Label Text="Create Meal Entry"
                            FontSize="30"
                            FontAttributes="Bold"
-                           TextColor="#4B3B5A"
+                           TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F3EFFF}"
                            SemanticProperties.HeadingLevel="Level1" />
 
-                    <Label Grid.Row="1"
-                           Text="Record the full details of a meal worth remembering."
+                    <Label Text="Save meal details, nutrition values, and personal notes in your food journal."
                            FontSize="15"
-                           TextColor="#7A6A92" />
+                           TextColor="{AppThemeBinding Light=#7A6A92, Dark=#CDBEE2}" />
 
-                </Grid>
+                </VerticalStackLayout>
 
             </Border>
 
-            <!-- Basic Information -->
-            <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFFFFF"
+            <!-- Meal Details -->
+            <Border Stroke="{AppThemeBinding Light=#D8C5FF, Dark=#4B3D5A}"
+                    StrokeThickness="1"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#31283C}"
                     Padding="18">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="22" />
+                    <RoundRectangle CornerRadius="24" />
                 </Border.StrokeShape>
 
                 <VerticalStackLayout Spacing="16">
 
-                    <Label Text="Basic information"
+                    <Label Text="Meal Details"
                            FontSize="18"
                            FontAttributes="Bold"
-                           TextColor="#8B6FB3" />
+                           TextColor="{AppThemeBinding Light=#8B6FB3, Dark=#D6BFFF}" />
 
                     <!-- Name -->
-                    <Border Stroke="#E5D7FF"
+                    <Border Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                             StrokeThickness="1"
-                            BackgroundColor="#FAF7FF"
+                            BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                             Padding="12,4">
 
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="14" />
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
 
                         <Entry x:Name="NameEntry"
-                               Placeholder="Name"
-                               TextColor="#4B3B5A"
-                               PlaceholderColor="#9A8AB5"
+                               Placeholder="Meal or drink name"
+                               TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
+                               PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
                                BackgroundColor="Transparent"
                                SemanticProperties.Hint="Required food or drink name" />
 
                     </Border>
 
                     <!-- Category -->
-                    <Border Stroke="#E5D7FF"
+                    <Border Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                             StrokeThickness="1"
-                            BackgroundColor="#FAF7FF"
+                            BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                             Padding="12,4">
 
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="14" />
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
 
                         <Picker x:Name="CategoryPicker"
-                                Title="Category"
-                                TitleColor="#9A8AB5"
-                                TextColor="#4B3B5A"
+                                Title="Select category"
+                                TitleColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
+                                TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
                                 BackgroundColor="Transparent"
                                 SemanticProperties.Hint="Required category">
 
@@ -119,7 +142,7 @@
                                 <x:String>Lunch</x:String>
                                 <x:String>Dinner</x:String>
                                 <x:String>Snack</x:String>
-                                <x:String>Drink</x:String>
+                                <x:String>Beverage</x:String>
                             </Picker.Items>
 
                         </Picker>
@@ -127,23 +150,23 @@
                     </Border>
 
                     <!-- Description -->
-                    <Border Stroke="#E5D7FF"
+                    <Border Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                             StrokeThickness="1"
-                            BackgroundColor="#FAF7FF"
+                            BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                             Padding="12">
 
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="14" />
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
 
                         <Editor x:Name="DescriptionEditor"
-                                Placeholder="Description, ingredients, flavour, or context"
-                                PlaceholderColor="#9A8AB5"
-                                TextColor="#4B3B5A"
+                                Placeholder="Taste, ingredients, cooking style, or meal notes"
+                                PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
+                                TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
                                 BackgroundColor="Transparent"
                                 AutoSize="TextChanges"
                                 HeightRequest="120"
-                                SemanticProperties.Hint="Describe this food or drink" />
+                                SemanticProperties.Hint="Describe this meal" />
 
                     </Border>
 
@@ -152,60 +175,60 @@
             </Border>
 
             <!-- Nutrition -->
-            <Border StrokeThickness="1"
-                    Stroke="#D6C2FF"
-                    BackgroundColor="#FFFFFF"
+            <Border Stroke="{AppThemeBinding Light=#D8C5FF, Dark=#4B3D5A}"
+                    StrokeThickness="1"
+                    BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#31283C}"
                     Padding="18">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="22" />
+                    <RoundRectangle CornerRadius="24" />
                 </Border.StrokeShape>
 
                 <VerticalStackLayout Spacing="16">
 
-                    <Label Text="Nutrition data"
+                    <Label Text="Nutrition Summary"
                            FontSize="18"
                            FontAttributes="Bold"
-                           TextColor="#7AA874" />
+                           TextColor="{AppThemeBinding Light=#78A26F, Dark=#B5E0A8}" />
 
                     <!-- Calories + Protein -->
                     <Grid ColumnDefinitions="*,*"
                           ColumnSpacing="12">
 
-                        <Border Stroke="#E5D7FF"
+                        <Border Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                                 StrokeThickness="1"
-                                BackgroundColor="#FAF7FF"
+                                BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                                 Padding="12,4">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="14" />
+                                <RoundRectangle CornerRadius="16" />
                             </Border.StrokeShape>
 
                             <Entry x:Name="CaloriesEntry"
                                    Placeholder="Calories"
                                    Keyboard="Numeric"
-                                   TextColor="#4B3B5A"
-                                   PlaceholderColor="#9A8AB5"
+                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
+                                   PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
                                    BackgroundColor="Transparent"
-                                   SemanticProperties.Hint="Required calories as a number" />
+                                   SemanticProperties.Hint="Required calories value" />
 
                         </Border>
 
                         <Border Grid.Column="1"
-                                Stroke="#E5D7FF"
+                                Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                                 StrokeThickness="1"
-                                BackgroundColor="#FAF7FF"
+                                BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                                 Padding="12,4">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="14" />
+                                <RoundRectangle CornerRadius="16" />
                             </Border.StrokeShape>
 
                             <Entry x:Name="ProteinEntry"
                                    Placeholder="Protein g"
                                    Keyboard="Numeric"
-                                   TextColor="#4B3B5A"
-                                   PlaceholderColor="#9A8AB5"
+                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
+                                   PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
                                    BackgroundColor="Transparent" />
 
                         </Border>
@@ -216,39 +239,39 @@
                     <Grid ColumnDefinitions="*,*"
                           ColumnSpacing="12">
 
-                        <Border Stroke="#E5D7FF"
+                        <Border Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                                 StrokeThickness="1"
-                                BackgroundColor="#FAF7FF"
+                                BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                                 Padding="12,4">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="14" />
+                                <RoundRectangle CornerRadius="16" />
                             </Border.StrokeShape>
 
                             <Entry x:Name="CarbsEntry"
-                                   Placeholder="Carbs g"
+                                   Placeholder="Carbohydrates g"
                                    Keyboard="Numeric"
-                                   TextColor="#4B3B5A"
-                                   PlaceholderColor="#9A8AB5"
+                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
+                                   PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
                                    BackgroundColor="Transparent" />
 
                         </Border>
 
                         <Border Grid.Column="1"
-                                Stroke="#E5D7FF"
+                                Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                                 StrokeThickness="1"
-                                BackgroundColor="#FAF7FF"
+                                BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                                 Padding="12,4">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="14" />
+                                <RoundRectangle CornerRadius="16" />
                             </Border.StrokeShape>
 
                             <Entry x:Name="FatEntry"
                                    Placeholder="Fat g"
                                    Keyboard="Numeric"
-                                   TextColor="#4B3B5A"
-                                   PlaceholderColor="#9A8AB5"
+                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
+                                   PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
                                    BackgroundColor="Transparent" />
 
                         </Border>
@@ -256,21 +279,21 @@
                     </Grid>
 
                     <!-- Allergy -->
-                    <Border Stroke="#E5D7FF"
+                    <Border Stroke="{AppThemeBinding Light=#E4D8FF, Dark=#524364}"
                             StrokeThickness="1"
-                            BackgroundColor="#FAF7FF"
+                            BackgroundColor="{AppThemeBinding Light=#FAF7FF, Dark=#3A3047}"
                             Padding="12,4">
 
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="14" />
+                            <RoundRectangle CornerRadius="16" />
                         </Border.StrokeShape>
 
                         <Entry x:Name="AllergyEntry"
-                               Placeholder="Allergy note or dietary restriction"
-                               TextColor="#4B3B5A"
-                               PlaceholderColor="#9A8AB5"
+                               Placeholder="Allergy or dietary notes"
+                               TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
+                               PlaceholderColor="{AppThemeBinding Light=#9A8AB5, Dark=#B8A9CC}"
                                BackgroundColor="Transparent"
-                               SemanticProperties.Hint="Enter allergy or dietary information" />
+                               SemanticProperties.Hint="Dietary information" />
 
                     </Border>
 
@@ -282,29 +305,29 @@
             <Border x:Name="ValidationPanel"
                     IsVisible="False"
                     StrokeThickness="0"
-                    BackgroundColor="#FFF4D6"
+                    BackgroundColor="{AppThemeBinding Light=#FFF4D6, Dark=#5A4722}"
                     Padding="14">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="16" />
+                    <RoundRectangle CornerRadius="18" />
                 </Border.StrokeShape>
 
                 <Label x:Name="ValidationLabel"
-                       TextColor="#A06B00"
-                       FontAttributes="Bold" />
+                       FontAttributes="Bold"
+                       TextColor="{AppThemeBinding Light=#A06B00, Dark=#FFD978}" />
 
             </Border>
 
             <!-- Save Button -->
-            <Button Text="Save record"
+            <Button Text="Save Entry"
                     HeightRequest="58"
-                    CornerRadius="18"
+                    CornerRadius="20"
                     FontAttributes="Bold"
                     FontSize="18"
-                    BackgroundColor="#CDB4FF"
-                    TextColor="#4B3B5A"
+                    BackgroundColor="{AppThemeBinding Light=#D4BEFF, Dark=#8C6CC7}"
+                    TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}"
                     Clicked="OnSaveClicked"
-                    SemanticProperties.Hint="Validate and save this record" />
+                    SemanticProperties.Hint="Save this meal record" />
 
         </VerticalStackLayout>
 

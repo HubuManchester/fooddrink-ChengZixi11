@@ -8,270 +8,373 @@
 
     <Grid RowDefinitions="Auto,*">
 
-        <!-- 页面背景 -->
+        <!-- 背景 -->
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#F6F0FF" Offset="0.0" />
-                <GradientStop Color="#F2EAFF" Offset="0.5" />
-                <GradientStop Color="#EEE4FF" Offset="1.0" />
+            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,1">
+
+                <GradientStop Color="{AppThemeBinding Light=#FBF8FF, Dark=#181422}"
+                              Offset="0.0" />
+
+                <GradientStop Color="{AppThemeBinding Light=#F3ECFF, Dark=#221B31}"
+                              Offset="0.45" />
+
+                <GradientStop Color="{AppThemeBinding Light=#EEE6FF, Dark=#2C2340}"
+                              Offset="1.0" />
+
             </LinearGradientBrush>
         </Grid.Background>
 
-        <!-- 顶部区域 -->
-        <Grid Padding="20,18,20,18">
+        <!-- Header -->
+        <VerticalStackLayout Padding="20,18,20,10"
+                             Spacing="18">
 
-            <Border StrokeThickness="0"
-                    Padding="18">
+            <!-- Summary Card -->
+            <Border Padding="22"
+                    StrokeThickness="0">
 
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="20" />
+                    <RoundRectangle CornerRadius="30" />
                 </Border.StrokeShape>
 
-                <!-- 顶部卡片渐变 -->
                 <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#CDB4FF" Offset="0.0" />
-                        <GradientStop Color="#DCC6FF" Offset="0.5" />
-                        <GradientStop Color="#EEE4FF" Offset="1.0" />
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,1">
+
+                        <GradientStop Color="{AppThemeBinding Light=#DCC7FF, Dark=#46356A}"
+                                      Offset="0.0" />
+
+                        <GradientStop Color="{AppThemeBinding Light=#EFE5FF, Dark=#382A57}"
+                                      Offset="0.55" />
+
+                        <GradientStop Color="{AppThemeBinding Light=#FFF8D7, Dark=#514020}"
+                                      Offset="1.0" />
+
                     </LinearGradientBrush>
                 </Border.Background>
 
                 <Border.Shadow>
                     <Shadow Brush="#22000000"
                             Offset="0,6"
-                            Radius="15"
-                            Opacity="0.25" />
+                            Radius="18"
+                            Opacity="0.16" />
                 </Border.Shadow>
 
-                <Grid RowDefinitions="Auto,Auto,Auto,Auto"
-                      RowSpacing="12">
+                <VerticalStackLayout Spacing="18">
 
                     <!-- 标题 -->
-                    <Label Text="NutriBite"
-                           FontSize="31"
-                           FontAttributes="Bold"
-                           TextColor="#4B3B5A"
-                           SemanticProperties.HeadingLevel="Level1" />
+                    <VerticalStackLayout Spacing="6">
 
-                    <!-- 描述 -->
-                    <Label Grid.Row="1"
-                           Text="Track nutrition, flavour, photos, and meal context in one place."
-                           FontSize="15"
-                           TextColor="#5F5172" />
+                        <Label Text="Healthy Meal Dashboard"
+                               FontSize="32"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#473659, Dark=#F5EEFF}"
+                               SemanticProperties.HeadingLevel="Level1" />
 
-                    <!-- 顶部标签 -->
-                    <Grid Grid.Row="2"
-                          ColumnDefinitions="*,*,*"
-                          ColumnSpacing="8"
-                          Margin="0,3,0,0">
+                        <Label Text="Keep track of nutrition intake, favourite meals, and daily eating patterns."
+                               FontSize="15"
+                               LineHeight="1.3"
+                               TextColor="{AppThemeBinding Light=#67587A, Dark=#D6C8F0}" />
 
-                        <Border BackgroundColor="#F7F1FF"
-                                Stroke="#D6C2FF"
-                                StrokeThickness="1"
-                                Padding="10,7">
+                    </VerticalStackLayout>
+
+                    <!-- 数据卡片 -->
+                    <Grid ColumnDefinitions="*,*,*"
+                          ColumnSpacing="10">
+
+                        <!-- Meals -->
+                        <Border BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#34274F}"
+                                Padding="12"
+                                StrokeThickness="0">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12" />
+                                <RoundRectangle CornerRadius="18" />
                             </Border.StrokeShape>
 
-                            <Label Text="Nutrition"
-                                   TextColor="#5B4B73"
-                                   FontSize="12"
-                                   FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center" />
+                            <VerticalStackLayout Spacing="3">
+
+                                <Label Text="Entries"
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light=#8D7AA8, Dark=#D0C2EA}" />
+
+                                <Label Text="4"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}" />
+
+                            </VerticalStackLayout>
+
                         </Border>
 
+                        <!-- Calories -->
                         <Border Grid.Column="1"
-                                BackgroundColor="#F7F1FF"
-                                Stroke="#D6C2FF"
-                                StrokeThickness="1"
-                                Padding="10,7">
+                                BackgroundColor="{AppThemeBinding Light=#FFF5CF, Dark=#55431D}"
+                                Padding="12"
+                                StrokeThickness="0">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12" />
+                                <RoundRectangle CornerRadius="18" />
                             </Border.StrokeShape>
 
-                            <Label Text="Photos"
-                                   TextColor="#5B4B73"
-                                   FontSize="12"
-                                   FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center" />
+                            <VerticalStackLayout Spacing="3">
+
+                                <Label Text="Energy"
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light=#B07B00, Dark=#FFE08A}" />
+
+                                <Label Text="1650"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#8C6200, Dark=#FFF4CC}" />
+
+                            </VerticalStackLayout>
+
                         </Border>
 
+                        <!-- Protein -->
                         <Border Grid.Column="2"
-                                BackgroundColor="#F7F1FF"
-                                Stroke="#D6C2FF"
-                                StrokeThickness="1"
-                                Padding="10,7">
+                                BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#34274F}"
+                                Padding="12"
+                                StrokeThickness="0">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="12" />
+                                <RoundRectangle CornerRadius="18" />
                             </Border.StrokeShape>
 
-                            <Label Text="Voice"
-                                   TextColor="#5B4B73"
-                                   FontSize="12"
-                                   FontAttributes="Bold"
-                                   HorizontalTextAlignment="Center" />
+                            <VerticalStackLayout Spacing="3">
+
+                                <Label Text="Protein"
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light=#8D7AA8, Dark=#D0C2EA}" />
+
+                                <Label Text="88g"
+                                       FontSize="22"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}" />
+
+                            </VerticalStackLayout>
+
                         </Border>
 
                     </Grid>
 
-                    <!-- 搜索框 -->
-                    <Grid Grid.Row="3"
-                          ColumnDefinitions="*,Auto"
-                          ColumnSpacing="10"
-                          Margin="0,6,0,0">
+                    <!-- 搜索 -->
+                    <Grid ColumnDefinitions="*,Auto"
+                          ColumnSpacing="12">
 
-                        <Border StrokeThickness="1"
-                                Stroke="#D6C2FF"
-                                BackgroundColor="#FFFFFF"
-                                Padding="0">
+                        <Border BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#34274F}"
+                                Stroke="{AppThemeBinding Light=#DDD1FF, Dark=#4E3C74}"
+                                StrokeThickness="1"
+                                Padding="4,0">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="14" />
+                                <RoundRectangle CornerRadius="22" />
                             </Border.StrokeShape>
 
                             <SearchBar x:Name="SearchFoodBar"
-                                       Placeholder="Search foods, drinks, categories, or tags"
+                                       Placeholder="Find meals, drinks, or ingredients"
                                        TextChanged="OnSearchTextChanged"
                                        SearchButtonPressed="OnSearchButtonPressed"
-                                       TextColor="#4B3B5A"
-                                       PlaceholderColor="#9A8AB5"
                                        BackgroundColor="Transparent"
-                                       SemanticProperties.Hint="Search the food and drink list" />
+                                       TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#F5EEFF}"
+                                       PlaceholderColor="{AppThemeBinding Light=#A393BE, Dark=#BFAFDC}"
+                                       SemanticProperties.Hint="Search meal records" />
+
                         </Border>
 
-                        <!-- Add 按钮 -->
-                        <Button Grid.Column="1"
-                                Text="Add"
-                                BackgroundColor="#FFE9A8"
-                                TextColor="#4B3B5A"
-                                FontAttributes="Bold"
-                                CornerRadius="14"
-                                Clicked="OnAddClicked"
-                                SemanticProperties.Hint="Add a new food or drink record" />
+                        <!-- Add -->
+                        <Border Grid.Column="1"
+                                BackgroundColor="{AppThemeBinding Light=#FFE7A3, Dark=#E0B84F}"
+                                Padding="16,0"
+                                StrokeThickness="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20" />
+                            </Border.StrokeShape>
+
+                            <Button Text="+"
+                                    FontSize="24"
+                                    FontAttributes="Bold"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{AppThemeBinding Light=#5A476D, Dark=#2B1C00}"
+                                    Clicked="OnAddClicked"
+                                    SemanticProperties.Hint="Add a new meal" />
+
+                        </Border>
 
                     </Grid>
 
-                </Grid>
+                </VerticalStackLayout>
 
             </Border>
 
-        </Grid>
+        </VerticalStackLayout>
 
-        <!-- 食物列表 -->
+        <!-- List -->
         <RefreshView Grid.Row="1"
                      x:Name="FoodRefreshView"
                      Refreshing="OnRefreshing">
 
             <CollectionView x:Name="FoodCollection"
                             SelectionMode="None"
-                            EmptyView="No matching food or drink records."
-                            Margin="16,0,16,18">
+                            Margin="18,0,18,20"
+                            EmptyView="No saved meal records found.">
 
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate x:DataType="models:FoodItem">
 
-                        <!-- 食物卡片 -->
-                        <Border StrokeThickness="1"
-                                Stroke="#D6C2FF"
-                                BackgroundColor="#FFFFFF"
-                                Padding="0"
-                                Margin="0,0,0,12">
+                        <Border BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2E2444}"
+                                Stroke="{AppThemeBinding Light=#DDD0FF, Dark=#49376B}"
+                                StrokeThickness="1"
+                                Padding="18"
+                                Margin="0,0,0,16">
 
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="18" />
+                                <RoundRectangle CornerRadius="26" />
                             </Border.StrokeShape>
 
                             <Border.Shadow>
-                                <Shadow Brush="#22000000"
-                                        Offset="0,4"
-                                        Radius="10"
-                                        Opacity="0.15" />
+                                <Shadow Brush="#16000000"
+                                        Offset="0,5"
+                                        Radius="12"
+                                        Opacity="0.12" />
                             </Border.Shadow>
 
-                            <Grid ColumnDefinitions="8,*">
+                            <VerticalStackLayout Spacing="14">
 
-                                <!-- 左侧紫色条 -->
-                                <BoxView BackgroundColor="#CDB4FF" />
+                                <!-- Top -->
+                                <Grid ColumnDefinitions="*,Auto">
 
-                                <Grid Grid.Column="1"
-                                      Padding="16"
-                                      RowDefinitions="Auto,Auto,Auto,Auto"
-                                      ColumnDefinitions="*,Auto"
-                                      RowSpacing="8"
-                                      ColumnSpacing="10">
+                                    <VerticalStackLayout Spacing="3">
 
-                                    <!-- 食物名称 -->
-                                    <Label Text="{Binding Name}"
-                                           FontSize="20"
-                                           FontAttributes="Bold"
-                                           TextColor="#3F3152"
-                                           SemanticProperties.HeadingLevel="Level2" />
+                                        <Label Text="{Binding Name}"
+                                               FontSize="24"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light=#463456, Dark=#F7F2FF}" />
 
-                                    <!-- 卡路里 -->
+                                        <Label Text="{Binding Category}"
+                                               FontSize="13"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light=#9578BF, Dark=#CDB7F4}" />
+
+                                    </VerticalStackLayout>
+
+                                    <!-- kcal -->
                                     <Border Grid.Column="1"
-                                            StrokeThickness="0"
-                                            BackgroundColor="#FFF2C7"
-                                            Padding="10,5">
+                                            BackgroundColor="{AppThemeBinding Light=#FFF0BE, Dark=#5C471A}"
+                                            Padding="12,6"
+                                            VerticalOptions="Start">
 
                                         <Border.StrokeShape>
-                                            <RoundRectangle CornerRadius="10" />
+                                            <RoundRectangle CornerRadius="14" />
                                         </Border.StrokeShape>
 
                                         <Label Text="{Binding CaloriesLabel}"
                                                FontSize="13"
                                                FontAttributes="Bold"
-                                               TextColor="#A06B00" />
+                                               TextColor="{AppThemeBinding Light=#9A6800, Dark=#FFE49A}" />
 
                                     </Border>
 
-                                    <!-- 描述 -->
-                                    <Label Grid.Row="1"
-                                           Grid.ColumnSpan="2"
-                                           Text="{Binding Description}"
-                                           FontSize="14"
-                                           TextColor="#6D5D82"
-                                           LineBreakMode="TailTruncation" />
+                                </Grid>
 
-                                    <!-- 营养信息 -->
-                                    <Label Grid.Row="2"
-                                           Grid.ColumnSpan="2"
-                                           Text="{Binding MacroSummary}"
-                                           FontSize="13"
-                                           TextColor="#5A8F6B" />
+                                <!-- Description -->
+                                <Label Text="{Binding Description}"
+                                       FontSize="14"
+                                       LineHeight="1.3"
+                                       TextColor="{AppThemeBinding Light=#6E5F82, Dark=#D7C9F0}"
+                                       LineBreakMode="TailTruncation" />
 
-                                    <!-- 底部 -->
-                                    <Grid Grid.Row="3"
-                                          Grid.ColumnSpan="2"
-                                          ColumnDefinitions="*,Auto"
-                                          Margin="0,4,0,0">
+                                <!-- Nutrition -->
+                                <Grid ColumnDefinitions="*,*,*"
+                                      ColumnSpacing="10">
 
-                                        <!-- 分类 -->
-                                        <Label Text="{Binding Category}"
-                                               FontSize="13"
-                                               FontAttributes="Bold"
-                                               TextColor="#8B6FB3" />
+                                    <!-- Protein -->
+                                    <Border BackgroundColor="{AppThemeBinding Light=#F8F4FF, Dark=#392B58}"
+                                            Padding="10">
 
-                                        <!-- Details 按钮 -->
-                                        <Button Grid.Column="1"
-                                                Text="Details"
-                                                Padding="14,8"
-                                                BackgroundColor="#FFE9A8"
-                                                TextColor="#4B3B5A"
-                                                CornerRadius="14"
-                                                FontAttributes="Bold"
-                                                CommandParameter="{Binding Id}"
-                                                Clicked="OnDetailsClicked"
-                                                SemanticProperties.Hint="Open nutrition details" />
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="14" />
+                                        </Border.StrokeShape>
 
-                                    </Grid>
+                                        <VerticalStackLayout>
+
+                                            <Label Text="Protein"
+                                                   FontSize="11"
+                                                   TextColor="{AppThemeBinding Light=#8D7AA8, Dark=#D1C2EC}" />
+
+                                            <Label Text="{Binding Protein}"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}" />
+
+                                        </VerticalStackLayout>
+
+                                    </Border>
+
+                                    <!-- Carbs -->
+                                    <Border Grid.Column="1"
+                                            BackgroundColor="{AppThemeBinding Light=#F8F4FF, Dark=#392B58}"
+                                            Padding="10">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="14" />
+                                        </Border.StrokeShape>
+
+                                        <VerticalStackLayout>
+
+                                            <Label Text="Carbs"
+                                                   FontSize="11"
+                                                   TextColor="{AppThemeBinding Light=#8D7AA8, Dark=#D1C2EC}" />
+
+                                            <Label Text="{Binding Carbs}"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}" />
+
+                                        </VerticalStackLayout>
+
+                                    </Border>
+
+                                    <!-- Fat -->
+                                    <Border Grid.Column="2"
+                                            BackgroundColor="{AppThemeBinding Light=#F8F4FF, Dark=#392B58}"
+                                            Padding="10">
+
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="14" />
+                                        </Border.StrokeShape>
+
+                                        <VerticalStackLayout>
+
+                                            <Label Text="Fat"
+                                                   FontSize="11"
+                                                   TextColor="{AppThemeBinding Light=#8D7AA8, Dark=#D1C2EC}" />
+
+                                            <Label Text="{Binding Fat}"
+                                                   FontSize="18"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#FFFFFF}" />
+
+                                        </VerticalStackLayout>
+
+                                    </Border>
 
                                 </Grid>
 
-                            </Grid>
+                                <!-- Button -->
+                                <Button Text="View Nutrition Details"
+                                        BackgroundColor="{AppThemeBinding Light=#FFE9A8, Dark=#E0B84F}"
+                                        TextColor="{AppThemeBinding Light=#4B3B5A, Dark=#2B1C00}"
+                                        FontAttributes="Bold"
+                                        CornerRadius="18"
+                                        HeightRequest="46"
+                                        CommandParameter="{Binding Id}"
+                                        Clicked="OnDetailsClicked"
+                                        SemanticProperties.Hint="Open nutrition details" />
+
+                            </VerticalStackLayout>
 
                         </Border>
 
